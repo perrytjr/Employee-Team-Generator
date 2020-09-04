@@ -7,12 +7,12 @@ class Employee {
         this.title = "Employee";
         this.email = email;
     };
-    getName(){
+    getName () {
         return this.name;
 
     };
-    getId(){
-        return this.email;
+    getId () {
+        return this.id;
 
     };
     getEmail () {
@@ -20,7 +20,7 @@ class Employee {
 
     };
     getRole () {
-        return this.title;
+        return "Employee";
     };
 }
 
