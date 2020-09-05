@@ -1,15 +1,63 @@
-const Manager = require("./lib/Manager");
-const Engineer = require("./lib/Engineer");
-const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
+
+
+
+
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+
+
+
+
+
+
+
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const teamRoster = [];
+
+function buildteamPage() {
+    fs.writeFileSync(outputPath, render(teamRoster), "utf-8")
+}
+
+function teamManager(){
+    inquirer.prompt([
+        {
+          type: "input",
+          message: "What is manager's name?",
+          name: "name",
+           
+        },
+
+        {
+        type: "input",
+        message: "What is manager's ID?",
+        name: "id",
+
+        },
+{
+    type: "input",
+    message:"What is manager's email?",
+    name: "email",
+},
+{type: "input",
+message: "What is the manager's office number?",
+name: "officeNumber",
+}
+
+    ]).then(answers => {
+        var manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
+        teamRoster.push(manager);
+        createTeam();
+    })
+}
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
