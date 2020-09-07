@@ -26,37 +26,67 @@ const teamRoster = [];
 function buildteamPage() {
     fs.writeFileSync(outputPath, render(teamRoster), "utf-8")
 }
+teamManager();
 
-function teamManager(){
+function teamManager() {
     inquirer.prompt([
         {
-          type: "input",
-          message: "What is manager's name?",
-          name: "name",
-           
+            type: "input",
+            message: "What is manager's name?",
+            name: "name",
+
         },
 
         {
-        type: "input",
-        message: "What is manager's ID?",
-        name: "id",
+            type: "input",
+            message: "What is manager's ID?",
+            name: "id",
 
         },
-{
-    type: "input",
-    message:"What is manager's email?",
-    name: "email",
-},
-{type: "input",
-message: "What is the manager's office number?",
-name: "officeNumber",
-}
+        {
+            type: "input",
+            message: "What is manager's email?",
+            name: "email",
+        },
+
+        {
+            type: "input",
+            message: "What is the manager's office number?",
+            name: "officeNumber",
+        }
 
     ]).then(answers => {
         var manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
         teamRoster.push(manager);
-        createTeam();
+        yourTeam();
     })
+}
+
+function yourTeam(){
+    inquirer.prompt([
+        {
+        type: "list",
+        name: "engineerIntern",
+        message: "Which team member would you like to add?",
+        choices: [
+            "Engineer",
+            "Intern",
+            "No more team members to add!"
+        ]
+        }
+    ]).then(function(yourChoice) {
+        switch(yourChoice.engineerIntern) {
+            case "Engineer":
+                yourEngineer();
+                break;
+                case "Intern":
+                    yourIntern();
+                    break;
+                    default:
+                        buildteamPage();
+        }
+
+    });
 }
 
 // Write code to use inquirer to gather information about the development team members,
