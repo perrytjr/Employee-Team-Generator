@@ -109,6 +109,7 @@ function yourEngineer(){
             name: "email",
             message: "What is your engineer's email?",
         },
+        
         {
             type: "input",
             name: "github",
@@ -119,9 +120,44 @@ function yourEngineer(){
         teamRoster.push(engineer);
         buildteamPage();
     });
-    
+
 }
 
+function yourIntern(){
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "name",
+            message: "What is your intern's name?",
+        },
+
+        {
+            type: "input",
+            name: "id",
+            message: "What is your intern's ID?",
+
+        },
+
+        {
+            type: "input",
+            name: "email",
+            message: "What is your intern's email?",
+        },
+
+        {
+            type: "input",
+            name: "school",
+            message: "What is your intern's school?",
+        }
+    ]).then(answers=> {
+        const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+        teamRoster.push(intern);
+        buildteamPage();
+    });
+
+}
+
+buildteamPage();
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
