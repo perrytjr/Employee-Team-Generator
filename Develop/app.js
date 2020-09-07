@@ -109,7 +109,7 @@ function yourEngineer(){
             name: "email",
             message: "What is your engineer's email?",
         },
-        
+
         {
             type: "input",
             name: "github",
@@ -118,7 +118,7 @@ function yourEngineer(){
     ]).then(answers=>{
         const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
         teamRoster.push(engineer);
-        buildteamPage();
+        yourTeam();
     });
 
 }
@@ -152,7 +152,7 @@ function yourIntern(){
     ]).then(answers=> {
         const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
         teamRoster.push(intern);
-        buildteamPage();
+        yourTeam();
     });
 
 }
