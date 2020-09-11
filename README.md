@@ -40,20 +40,3 @@ Please use the following link to access a video demonstrating the application fu
 # Contact
 
 Linkedin: https://linkedin.com/in/perry-theobald-42450241
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-https://www.nicoespeon.com/en/2015/01/oop-revisited-switch-in-js/
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch
